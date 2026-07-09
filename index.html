@@ -729,7 +729,7 @@ const MIZU=(()=>{
       const o=y*gw
       for(let x=1;x<gw-1;x++){
         const i=o+x
-        u1[i]=((u0[i-1]+u0[i+1]+u0[i-gw]+u0[i+gw])*0.5-u1[i])*0.986
+        u1[i]=(2*u0[i]-u1[i]+(u0[i-1]+u0[i+1]+u0[i-gw]+u0[i+gw]-4*u0[i])*0.11)*0.991   // 伝播ゆっくり・余韻ながく
       }
     }
     const t=u0;u0=u1;u1=t
@@ -749,7 +749,7 @@ const MIZU=(()=>{
     ctx.putImageData(img,0,0)
   }
   function loop(){
-    step();step();draw()
+    step();draw()                                          // 1フレーム1歩＝水はゆっくり進む
     if(++idleT>240){raf=null;return}                        // 触れられず波も凪いだら、完全に眠る
     raf=requestAnimationFrame(loop)
   }
