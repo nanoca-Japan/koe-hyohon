@@ -517,7 +517,7 @@ const STEP_NO = {'s-rec':0,'s-ana':1,'s-sci':1,'s-map':2,'s-det':2,'s-cpl':3}
 let isRec=false, recSecs=0, recTimer=null, hasAudio=false, wAnim=null
 let mediaRec=null, recChunks=[], audioBlob=null, audioBuf=null, audioURL=null
 let analyser=null, acx=null
-const BUILD='2026.07-f6'   // ビルド刻印：画面左下に表示。デプロイ確認はこの番号で（キャッシュ事故の根絶）
+const BUILD='2026.07-f7'   // ビルド刻印：画面左下に表示。デプロイ確認はこの番号で（キャッシュ事故の根絶）
 const QUIET=new URLSearchParams(location.search).has('quiet')   // ?quiet=1 ＝静謐モード：光のグロー・粒・螺旋を完全に消す（切り分け・避難用）
 
 /* ─── 音の解錠（スマホの三重の罠への守り） ───
@@ -2026,18 +2026,30 @@ function initSpecimen(cid,wid,num){
 
   /* ── 柔らかな光のテクスチャ ── */
   const whiteTex=(()=>{
-    /* 128px・多段のなめらかなグラデ＋dithering（材質側）＝iPhoneの色割れ（バンディング）対策 */
+    /* iPhoneの色割れ（バンディング）対策：光のテクスチャに「白一色の微細ノイズ」を焼き込む。
+       階調の段差はノイズで溶け、かつRGBは常に純白＝色のついた砂は構造的に存在できない */
     const cv=document.createElement('canvas');cv.width=cv.height=128
     const ctx=cv.getContext('2d'),gd=ctx.createRadialGradient(64,64,2,64,64,64)
     ;[[0,1],[0.25,0.82],[0.45,0.58],[0.65,0.32],[0.85,0.10],[1,0]].forEach(p=>gd.addColorStop(p[0],'rgba(255,255,255,'+p[1]+')'))
     ctx.fillStyle=gd;ctx.beginPath();ctx.arc(64,64,64,0,Math.PI*2);ctx.fill()
+    const img=ctx.getImageData(0,0,128,128),d=img.data
+    for(let i=0;i<d.length;i+=4){
+      d[i]=255;d[i+1]=255;d[i+2]=255                                   // RGBは必ず純白
+      if(d[i+3]>0&&d[i+3]<250){
+        const px=(i>>2)%128,py=(i>>2)/128|0
+        const h=((px*73856093)^(py*19349663))>>>0                       // 決定論の空間ハッシュ（乱数依存しない）
+        d[i+3]=Math.max(0,Math.min(255,d[i+3]+((h%7)-3)))               // 透明度にだけ±3の白ノイズ＝段差が溶ける
+      }
+    }
+    ctx.putImageData(img,0,0)
     return new THREE.CanvasTexture(cv)
   })()
   // 背景の淡い光だまり（花束の後ろ）— 粒ではなく、やわらかな一枚の光で満たす
-  const glow=new THREE.Sprite(new THREE.SpriteMaterial({map:whiteTex,color:0xfff2da,transparent:true,opacity:0.13,blending:THREE.AdditiveBlending,depthWrite:false,dithering:true}))
+  const sfg=Math.min(1,W/720)                       // 画面の小ささに応じ、背景の光だまりも遠慮する
+  const glow=new THREE.Sprite(new THREE.SpriteMaterial({map:whiteTex,color:0xfff2da,transparent:true,opacity:0.13*(0.45+0.55*sfg),blending:THREE.AdditiveBlending,depthWrite:false}))
   glow.scale.set(11,11,1);glow.position.set(0,2.1,-1.6)
   scene.add(glow)
-  const glow2=new THREE.Sprite(new THREE.SpriteMaterial({map:whiteTex,color:0xc2c8d6,transparent:true,opacity:0.06,blending:THREE.AdditiveBlending,depthWrite:false,dithering:true}))
+  const glow2=new THREE.Sprite(new THREE.SpriteMaterial({map:whiteTex,color:0xc2c8d6,transparent:true,opacity:0.06*(0.45+0.55*sfg),blending:THREE.AdditiveBlending,depthWrite:false}))
   glow2.scale.set(7.5,7.5,1);glow2.position.set(0,0.6,-1.2)
   if(QUIET){glow.visible=false;glow2.visible=false}
   scene.add(glow2)
@@ -2098,7 +2110,7 @@ function initSpecimen(cid,wid,num){
     shellG.add(l);introFade.push({m:l.material,o:0.12})
   })
   // 殻の内からあふれる光（割れた瞬間に満ち、余光として残る）
-  const birthGlow=new THREE.Sprite(new THREE.SpriteMaterial({map:whiteTex,color:0xfff2da,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false,dithering:true}))
+  const birthGlow=new THREE.Sprite(new THREE.SpriteMaterial({map:whiteTex,color:0xfff2da,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}))
   if(QUIET)birthGlow.visible=false
   birthGlow.scale.set(3.4,3.4,1);birthGlow.position.set(0,0.75,0)
   pivot.add(birthGlow)
@@ -2437,7 +2449,7 @@ function initSpecimen(cid,wid,num){
     for(let i=0;i<cnt;i++)prms.push(gen(i))
     const geo=new THREE.BufferGeometry()
     geo.setAttribute('position',new THREE.BufferAttribute(P,3))
-    const mat=new THREE.PointsMaterial({map:whiteTex,color:0xfff3e2,size,transparent:true,opacity:0,blending:THREE.AdditiveBlending,sizeAttenuation:true,depthWrite:false,dithering:true})
+    const mat=new THREE.PointsMaterial({map:whiteTex,color:0xfff3e2,size,transparent:true,opacity:0,blending:THREE.AdditiveBlending,sizeAttenuation:true,depthWrite:false})
     pivot.add(new THREE.Points(geo,mat))
     flows.push({P,prms,geo,mat,baseOp:op,ph:flows.length*1.37})
   }
@@ -2480,7 +2492,7 @@ function initSpecimen(cid,wid,num){
       pts.push(new THREE.Vector3(r*Math.cos(a),y,r*Math.sin(a)*0.9))
     }
     halo.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
-      new THREE.LineBasicMaterial({color:0xfff2d8,transparent:true,opacity:0.10,blending:THREE.AdditiveBlending,dithering:true})))
+      new THREE.LineBasicMaterial({color:0xfff2d8,transparent:true,opacity:0.10,blending:THREE.AdditiveBlending})))
   }
   if(QUIET)halo.visible=false
   pivot.add(halo)
@@ -2543,7 +2555,7 @@ function initSpecimen(cid,wid,num){
     fg.add(bw)
     // その花の色の「芯の光」：どの花が何色かを、花の中心で明確に示す
     const cc=new THREE.Color(f.color[1]).offsetHSL(0,0.6,-0.04)   // 彩度は高く、明度は抑えて白飛びを防ぐ
-    const core=new THREE.Sprite(new THREE.SpriteMaterial({map:whiteTex,color:cc,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false,dithering:true}))
+    const core=new THREE.Sprite(new THREE.SpriteMaterial({map:whiteTex,color:cc,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false}))
     if(QUIET)core.visible=false
     core.scale.setScalar(scale*(f.sp.style==='raceme'?0.62:0.78))
     core.position.copy(p3)
