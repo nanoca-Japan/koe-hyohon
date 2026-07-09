@@ -517,7 +517,7 @@ const STEP_NO = {'s-rec':0,'s-ana':1,'s-sci':1,'s-map':2,'s-det':2,'s-cpl':3}
 let isRec=false, recSecs=0, recTimer=null, hasAudio=false, wAnim=null
 let mediaRec=null, recChunks=[], audioBlob=null, audioBuf=null, audioURL=null
 let analyser=null, acx=null
-const BUILD='2026.07-f4'   // ビルド刻印：画面左下に表示。デプロイ確認はこの番号で（キャッシュ事故の根絶）
+const BUILD='2026.07-f5'   // ビルド刻印：画面左下に表示。デプロイ確認はこの番号で（キャッシュ事故の根絶）
 
 /* ─── 音の解錠（スマホの三重の罠への守り） ───
    ①iPhoneのマナーモード（消音スイッチ）はWeb Audioを黙らせる——無音の<audio>ループを同じ手つきで
@@ -2419,28 +2419,28 @@ function initSpecimen(cid,wid,num){
 
   /* ── 光の粒子（加算発光）：花冠を纏い、螺旋で立ちのぼる ── */
   const flows=[]
-  const allCols=flowers.map(x=>new THREE.Color(x.color[1]).offsetHSL(0,0.12,0.06))
   /* 粒子の作法（集合体恐怖への配慮＝声標本の生命線）：
-     ①粒はほぼ白い光（色はほのかな気配だけ）②花とともに生まれる（花のない画面に粒の群れを見せない）
+     ①粒は完全に白い光（頂点色バッファは持たない。iOSのGPUが色データの転送に失敗すると
+       メモリのゴミ＝ランダムな原色の粒が固定表示される事故が起こるため、色の箱ごと廃止した。
+       箱がなければゴミは物理的に表示できない）
+     ②花とともに生まれる（誕生前は材質の不透明度そのものが0＝どんな事故でも見えない）
      ③小さな画面ほど、小さく・少なく・淡く */
   const sf=Math.min(1,W/720)                       // 画面の小ささに応じた粒の遠慮
-  const whiteMix=0.85+0.09*(1-sf)                  // 小さな画面ほど、色はさらに白へ溶ける（丸の群れを見せない）
   function makeFlow(cnt,size,op,gen){
     cnt=Math.max(3,Math.round(cnt*(0.42+0.58*sf*sf)))   // 数は二乗で遠慮：スマホでは目に見えて少なく
     size=size*(0.50+0.50*sf)
     op=op*(0.58+0.42*sf)
-    const P=new Float32Array(cnt*3),C=new Float32Array(cnt*3),prms=[]
+    const P=new Float32Array(cnt*3),prms=[]
     for(let i=0;i<cnt;i++)prms.push(gen(i))
     const geo=new THREE.BufferGeometry()
     geo.setAttribute('position',new THREE.BufferAttribute(P,3))
-    geo.setAttribute('color',new THREE.BufferAttribute(C,3))
-    pivot.add(new THREE.Points(geo,new THREE.PointsMaterial({map:whiteTex,size,transparent:true,opacity:op,vertexColors:true,blending:THREE.AdditiveBlending,sizeAttenuation:true,depthWrite:false})))
-    flows.push({P,C,prms,geo})
+    const mat=new THREE.PointsMaterial({map:whiteTex,color:0xfff3e2,size,transparent:true,opacity:0,blending:THREE.AdditiveBlending,sizeAttenuation:true,depthWrite:false})
+    pivot.add(new THREE.Points(geo,mat))
+    flows.push({P,prms,geo,mat,baseOp:op,ph:flows.length*1.37})
   }
-  function cloudGen(center,scale,ownHex){
+  function cloudGen(center,scale){
     return ()=>({
       c:center,
-      col:new THREE.Color(ownHex).lerp(new THREE.Color(0xffffff),whiteMix),  // 85〜94%白に溶かす＝色はもう「気配」しか残れない
       r:scale*(0.34+Math.pow(srng(),0.85)*0.72),            // 少し広く、ゆったりと散らす
       th0:srng()*Math.PI*2,
       om:(0.10+srng()*0.26)*(srng()<0.5?-1:1),
@@ -2451,22 +2451,19 @@ function initSpecimen(cid,wid,num){
         const a=prm.th0+prm.om*t
         return [prm.c.x+prm.r*Math.cos(a),
                 prm.c.y+prm.y0+prm.bA*Math.sin(prm.bW*t+prm.bP),
-                prm.c.z+prm.r*Math.sin(a)*0.9,
-                0.10+0.62*(0.5+0.5*Math.sin(prm.fW*t+prm.fP))]
+                prm.c.z+prm.r*Math.sin(a)*0.9]
       }
     })
   }
   function streamGen(){
     return i=>({
       p:srng(),sp:0.04+srng()*0.045,a0:srng()*Math.PI*2,rj:0.85+srng()*0.4,
-      col:allCols[i%allCols.length].clone().lerp(new THREE.Color(0xffffff),Math.min(0.96,whiteMix+0.02)),   // 立ちのぼる光も、ほぼ白へ
       upd(prm,t){
         const p=(prm.p+prm.sp*t)%1
         const y=0.85+p*2.9
         const r=(1.30-p*0.68)*prm.rj
         const a=prm.a0+p*3.4+t*0.10
-        return [r*Math.cos(a),y,r*Math.sin(a)*0.9,
-                Math.sin(Math.PI*p)*(0.30+0.70*(0.5+0.5*Math.sin(t*0.8+prm.a0)))]
+        return [r*Math.cos(a),y,r*Math.sin(a)*0.9]
       }
     })
   }
@@ -2560,15 +2557,15 @@ function initSpecimen(cid,wid,num){
     fg.scale.set(0.92,0.001,0.92)                        // 生まれる前：殻の中で息をひそめて
     flowerAnims.push({fg,bloom,coreMat:core.material})
     // 纏う光の粒子
-    makeFlow(18+Math.round(f.v*10),0.115,0.40,cloudGen(p3,scale,f.color[1]))
-    makeFlow(6,0.185,0.22,cloudGen(p3,scale*1.05,f.color[1]))
+    makeFlow(18+Math.round(f.v*10),0.115,0.40,cloudGen(p3,scale))
+    makeFlow(6,0.185,0.22,cloudGen(p3,scale*1.05))
   })
   // 立ちのぼる光の螺旋流
   makeFlow(46,0.095,0.30,streamGen())
   makeFlow(12,0.165,0.20,streamGen())
 
   function updateFlows(t){
-    // 粒は花とともに生まれる：誕生前の“裸の粒の群れ”を絶対に見せない
+    // 粒は花とともに生まれる：誕生前は材質の不透明度が0＝“裸の粒の群れ”は構造的に見えない
     const bf=Math.min(1,Math.max(0,(t-1.8)/2.4))
     const birthFade=bf*bf*(3-2*bf)
     flows.forEach(fl=>{
@@ -2576,13 +2573,10 @@ function initSpecimen(cid,wid,num){
         const prm=fl.prms[i]
         const r=prm.upd(prm,t)
         fl.P[i*3]=r[0];fl.P[i*3+1]=r[1];fl.P[i*3+2]=r[2]
-        const c=prm.col,fade=r[3]*birthFade      // 加算発光：暗いほど消え入る
-        fl.C[i*3]=c.r*fade
-        fl.C[i*3+1]=c.g*fade
-        fl.C[i*3+2]=c.b*fade
       }
       fl.geo.attributes.position.needsUpdate=true
-      fl.geo.attributes.color.needsUpdate=true
+      // 群としての呼吸：明滅は粒ごとでなく群ごとに（白い光がゆっくり満ち引きする）
+      fl.mat.opacity=fl.baseOp*birthFade*(0.62+0.38*Math.sin(t*0.7+fl.ph))
     })
   }
 
