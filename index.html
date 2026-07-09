@@ -30,14 +30,14 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 /* ── ヘッダー ── */
-.hdr{padding:16px 20px 12px;border-bottom:0.5px solid var(--paper3);display:flex;align-items:flex-end;justify-content:space-between;position:sticky;top:0;background:var(--paper);z-index:10}
+.hdr{padding:16px 20px 12px;border-bottom:0.5px solid var(--paper3);display:flex;align-items:flex-end;justify-content:space-between;position:sticky;top:0;background:rgba(248,246,241,0.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:10}
 .logo{font-family:var(--mincho);font-size:21px;font-weight:600;letter-spacing:.3em;color:var(--ink);line-height:1}
 .logo sup{font-size:9px;letter-spacing:0;vertical-align:top;color:var(--ink3)}
 .logo small{display:block;font-family:var(--mono);font-size:8.5px;font-weight:300;color:var(--ink3);letter-spacing:.16em;text-transform:uppercase;margin-top:5px}
 .step-lbl{font-size:10px;color:var(--ink4);letter-spacing:.1em;text-align:right}
 
 /* ── 工程ストリップ ── */
-.proc{display:flex;gap:0;padding:10px 20px 0;background:var(--paper)}
+.proc{display:flex;gap:0;padding:10px 20px 0;background:rgba(248,246,241,0.62)}
 .proc-i{flex:1;text-align:center;position:relative;padding-bottom:9px}
 .proc-i::before{content:'';position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--paper3);transition:background .4s}
 .proc-i.done::before{background:var(--ink4)}
@@ -59,7 +59,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
 .sub{font-size:11px;color:var(--ink3);line-height:1.85;margin-top:7px}
 
 /* ── 録音 ── */
-.zone{background:var(--paper2);border:0.5px solid var(--paper3);border-radius:3px;padding:26px 20px;display:flex;flex-direction:column;align-items:center;gap:15px}
+.zone{background:rgba(239,236,229,0.66);border:0.5px solid var(--paper3);border-radius:3px;padding:26px 20px;display:flex;flex-direction:column;align-items:center;gap:15px}
 .rbtn{width:68px;height:68px;border-radius:50%;border:1.5px solid var(--ink3);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .3s}
 .rbtn:hover{border-color:var(--teal)}
 .rbtn.rec{border-color:#b45309;animation:pulse 1.2s ease-in-out infinite}
@@ -96,7 +96,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
 .philo-b em{font-family:var(--mincho);font-style:normal;color:var(--ink2)}
 
 /* ── 解析ログ ── */
-.log-box{background:var(--paper2);border:0.5px solid var(--paper3);border-radius:3px;padding:15px 17px;min-height:172px}
+.log-box{background:rgba(239,236,229,0.66);border:0.5px solid var(--paper3);border-radius:3px;padding:15px 17px;min-height:172px}
 .lg{font-size:11px;line-height:2.1;color:var(--ink3);opacity:0;transition:opacity .4s}
 .lg.on{opacity:1}
 .lg span{color:var(--teal)}
@@ -105,11 +105,11 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
 .progb{height:100%;background:var(--teal);width:0%;transition:width .35s ease}
 
 /* ── レーダーチャート ── */
-.radar-wrap{background:var(--paper2);border:0.5px solid var(--paper3);border-radius:3px;padding:18px 14px 10px;position:relative}
+.radar-wrap{background:rgba(239,236,229,0.66);border:0.5px solid var(--paper3);border-radius:3px;padding:18px 14px 10px;position:relative}
 .radar-wrap svg{display:block;margin:0 auto;overflow:visible}
 .radar-cap{text-align:center;font-size:9px;color:var(--ink4);letter-spacing:.14em;padding:8px 0 6px}
 .vlist{display:flex;flex-direction:column;border:0.5px solid var(--paper3);border-radius:3px;overflow:hidden}
-.vrow{display:flex;align-items:center;gap:12px;padding:11px 15px;border-bottom:0.5px solid var(--paper3);background:var(--paper2)}
+.vrow{display:flex;align-items:center;gap:12px;padding:11px 15px;border-bottom:0.5px solid var(--paper3);background:rgba(239,236,229,0.66)}
 .vrow:last-child{border-bottom:none}
 .vmark{width:22px;height:22px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .vmark span{width:8px;height:8px;border-radius:50%;display:block}
@@ -131,7 +131,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
 
 /* ── 花カード ── */
 .fgrid{display:flex;flex-direction:column;gap:8px}
-.fcard{background:var(--paper2);border:0.5px solid var(--paper3);border-radius:3px;overflow:hidden}
+.fcard{background:rgba(239,236,229,0.66);border:0.5px solid var(--paper3);border-radius:3px;overflow:hidden}
 .fcard-h{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:0.5px solid var(--paper3)}
 .fvp{font-size:9px;letter-spacing:.16em;color:#fff;border-radius:2px;padding:3px 7px;font-family:var(--mincho);font-weight:500}
 .fsp{flex:1}
@@ -148,12 +148,12 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
 .fnote{padding:8px 14px 10px;border-top:0.5px solid var(--paper3);font-size:9.5px;color:var(--ink3);line-height:1.7}
 
 /* ── バランス考察 ── */
-.balance{border:0.5px solid var(--paper3);border-radius:3px;padding:14px 16px;background:var(--paper2)}
+.balance{border:0.5px solid var(--paper3);border-radius:3px;padding:14px 16px;background:rgba(239,236,229,0.66)}
 .balance .t{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink2);line-height:1.9}
 .balance p{font-size:10px;color:var(--ink3);line-height:1.9;margin-top:7px}
 
 /* ── 設計仕様 ── */
-.sa{background:var(--paper2);border:0.5px solid var(--paper3);border-radius:3px;padding:13px 16px}
+.sa{background:rgba(239,236,229,0.66);border:0.5px solid var(--paper3);border-radius:3px;padding:13px 16px}
 .sa-r{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:0.5px solid var(--paper3);gap:12px}
 .sa-r:last-child{border:none}
 .sa-k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);flex-shrink:0}
@@ -164,7 +164,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
 
 /* ── アトリエ工程 ── */
 .atelier-steps{display:flex;flex-direction:column;gap:8px}
-.astep{display:flex;gap:13px;border:0.5px solid var(--paper3);border-radius:3px;padding:13px 15px;background:var(--paper2)}
+.astep{display:flex;gap:13px;border:0.5px solid var(--paper3);border-radius:3px;padding:13px 15px;background:rgba(239,236,229,0.66)}
 .astep .no{font-size:9px;letter-spacing:.1em;color:var(--teal);white-space:nowrap;padding-top:2px}
 .astep .bd{flex:1}
 .astep .tt{font-family:var(--mincho);font-size:12.5px;font-weight:600;color:var(--ink);letter-spacing:.1em}
@@ -186,14 +186,14 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
 /* ── 完了 ── */
 .cpl{display:flex;flex-direction:column;align-items:center;gap:15px;padding-top:26px}
 .cpl-sym{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--teal);line-height:1}
-.cid{background:var(--paper2);border:0.5px solid var(--paper3);border-radius:3px;padding:13px 18px;width:100%;text-align:left}
+.cid{background:rgba(239,236,229,0.66);border:0.5px solid var(--paper3);border-radius:3px;padding:13px 18px;width:100%;text-align:left}
 .cid span{font-size:9px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink4);display:block;margin-bottom:3px}
 .cid strong{font-size:15px;color:var(--ink);font-weight:400;letter-spacing:.06em}
 .cid .mn{font-family:var(--mincho);font-weight:500;font-size:13.5px}
 .tl-note{border-left:2px solid var(--teal3);padding:8px 13px;width:100%}
 .tl-note p{font-size:11px;color:var(--teal);line-height:1.9}
 /* シェア */
-.sci-basis{width:100%;border:0.5px solid var(--paper3);border-radius:3px;background:var(--paper2);margin-top:6px;overflow:hidden}
+.sci-basis{width:100%;border:0.5px solid var(--paper3);border-radius:3px;background:rgba(239,236,229,0.66);margin-top:6px;overflow:hidden}
 .sci-basis>summary{list-style:none;cursor:pointer;padding:11px 14px;font-size:11px;letter-spacing:.08em;color:var(--teal);font-family:var(--mono);display:flex;align-items:center;gap:7px}
 .sci-basis>summary::-webkit-details-marker{display:none}
 .sci-basis>summary::before{content:"＋";color:var(--ink4)}
@@ -206,13 +206,13 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
 .sci-in li b{color:var(--ink);font-weight:600}
 .sci-note{font-size:9.5px;color:var(--ink4);line-height:1.75;margin:8px 0 0;padding-top:8px;border-top:0.5px dashed var(--paper3)}
 .sci-cred{font-size:10px;color:var(--ink3);margin-top:8px;font-family:var(--mono);letter-spacing:.04em}
-.order-box{width:100%;border:0.5px solid var(--teal);border-radius:3px;padding:15px 16px;display:flex;flex-direction:column;gap:8px;background:var(--paper2)}
+.order-box{width:100%;border:0.5px solid var(--teal);border-radius:3px;padding:15px 16px;display:flex;flex-direction:column;gap:8px;background:rgba(239,236,229,0.66)}
 .order-h{font-size:13px;color:var(--ink);font-weight:600;text-align:center;letter-spacing:.04em}
 .order-sub{font-size:10px;color:var(--ink3);text-align:center;line-height:1.7}
 .order-btn{width:100%;padding:14px;background:var(--teal);color:#fff;border:none;border-radius:3px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;cursor:pointer}
 .order-btn:hover{background:var(--teal2)}
 .order-hint{font-size:9.5px;color:var(--ink4);text-align:center;line-height:1.6}
-.share{width:100%;border:0.5px solid var(--paper3);border-radius:3px;padding:14px 16px;display:flex;flex-direction:column;gap:11px;background:var(--paper2)}
+.share{width:100%;border:0.5px solid var(--paper3);border-radius:3px;padding:14px 16px;display:flex;flex-direction:column;gap:11px;background:rgba(239,236,229,0.66)}
 .share-lbl{font-size:10px;letter-spacing:.16em;color:var(--ink3);text-align:center}
 .share-prev{width:100%;border-radius:3px;overflow:hidden;background:#14161c;border:0.5px solid var(--paper3);position:relative;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
 .share-prev img{width:100%;height:100%;object-fit:cover;display:block}
@@ -454,7 +454,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
     <div class="note" style="border-left-color:var(--teal3)">
       <p style="color:var(--teal)">このシステムが決めるのは骨格までです<br>完成作品を自動決定することはありません</p>
     </div>
-    <div id="atelier-tools" style="display:none;flex-direction:column;gap:8px;border:0.5px solid var(--paper3);border-radius:3px;padding:12px;background:var(--paper2)">
+    <div id="atelier-tools" style="display:none;flex-direction:column;gap:8px;border:0.5px solid var(--paper3);border-radius:3px;padding:12px;background:rgba(239,236,229,0.66)">
       <div class="lbl" style="text-align:center;margin:0">アトリエ専用ツール</div>
       <button class="btn-p" style="width:100%" onclick="exportSTL(this)">3Dプリンタ用データ（.stl）を書き出す</button>
       <button class="btn-s" style="width:100%" onclick="exportDesignData()">造形設計データ（.json）を書き出す</button>
@@ -496,7 +496,9 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
           ・底面のQRコード（声の記録ページ「生きた標本」につながります）<br>
           ・録音した声の原音を、アトリエで永久保存<br>
           <b style="display:block;margin-top:7px">届きかた</b>
-          ご注文（決済とお届け先の入力）→ アトリエで制作 → ご自宅へ配送。完成時期はメールでお知らせします。価格は購入画面でご確認ください。</div>
+          ご注文（決済とお届け先の入力）→ アトリエで制作 → ご自宅へ配送。完成時期はメールでお知らせします。<br>
+          <b style="display:block;margin-top:7px">価格</b>
+          <span style="font-size:15px;letter-spacing:.06em">¥80,000</span>（一点物・送料込み・カード決済）</div>
         <button class="order-btn" onclick="goOrder()">ご注文手続きへ進む　→</button>
         <div class="order-hint" id="order-hint"></div>
       </div>
@@ -513,7 +515,9 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:1.5px solid v
           ・受け取った人のスマートフォンで、この花束が音楽とともに生まれる「誕生のリンク」<br>
           ・録音した声が、そのままメッセージになります（文字の添え書きも付けられます）<br>
           <b style="display:block;margin-top:7px">届きかた</b>
-          リンクを作って、LINEやSNSでそのまま贈れます。価格は購入画面でご確認ください。<br>
+          リンクを作って、LINEやSNSでそのまま贈れます。<br>
+          <b style="display:block;margin-top:7px">価格</b>
+          <span style="font-size:15px;letter-spacing:.06em">¥3,800</span>（カード決済）<br>
           <span style="opacity:.75">※贈るための花束をつくるなら、最初に戻って、相手に伝えたい言葉を録音してください。その声が花になります。</span></div>
         <textarea id="gift-t" maxlength="140" placeholder="添え書き（任意・宛名やひとこと）" rows="2"></textarea>
         <input id="gift-f" maxlength="24" placeholder="お名前（任意・「◯◯より」と届きます）">
@@ -579,7 +583,7 @@ const STEP_NO = {'s-rec':0,'s-ana':1,'s-sci':1,'s-map':2,'s-det':2,'s-cpl':3}
 let isRec=false, recSecs=0, recTimer=null, hasAudio=false, wAnim=null
 let mediaRec=null, recChunks=[], audioBlob=null, audioBuf=null, audioURL=null
 let analyser=null, acx=null
-const BUILD='2026.07-f22'   // ビルド刻印：画面左下に表示。デプロイ確認はこの番号で（キャッシュ事故の根絶）
+const BUILD='2026.07-f26'   // ビルド刻印：画面左下に表示。デプロイ確認はこの番号で（キャッシュ事故の根絶）
 const QUIET=new URLSearchParams(location.search).has('quiet')   // ?quiet=1 ＝静謐モード：光のグロー・粒・螺旋を完全に消す（切り分け・避難用）
 
 /* ─── デジタルギフト：設計データはURLに宿る（サーバー不要・決定論だから花も音楽も完全再現できる） ─── */
@@ -689,6 +693,109 @@ function unlockAudio(){
   }catch(e){}
 }
 document.addEventListener('pointerdown',unlockAudio,{capture:true})
+
+/* ─── 水面（みなも）：入った瞬間、生成りの紙の上を淡い水がゆらいでいる ───
+   画像も動画も使わない。波動方程式をコードがリアルタイムに解いている（minamoへの敬意とともに）。
+   触れると波紋。録音中は、声（音の波）がそのまま水面（水の波）を揺らす——声標本の科学と同じ「波」のリンク。
+   作法：色は生成りの明暗のみ（彩度なし＝色割れ禁忌の圏外）・白一色の静的ディザ焼き込み・静止したら完全に眠る（電池への慈悲） */
+const MIZU=(()=>{
+  if(QUIET)return {ripple(){},voice(){}}
+  const CELL=8
+  let cv,ctx,gw=0,gh=0,u0,u1,img,noise,raf=null,idleT=0
+  function resize(){
+    const w=Math.max(4,Math.ceil(innerWidth/CELL)),h=Math.max(4,Math.ceil(innerHeight/CELL))
+    if(!cv||cv.width===w&&cv.height===h)return
+    cv.width=w;cv.height=h;gw=w;gh=h
+    u0=new Float32Array(w*h);u1=new Float32Array(w*h)
+    img=ctx.createImageData(w,h)
+    noise=new Float32Array(w*h)
+    for(let i=0;i<w*h;i++){const x=i%w,y=(i/w)|0;noise[i]=((((x*73856093)^(y*19349663))>>>0)%5-2)*0.4}
+    const d=img.data
+    for(let p=3;p<d.length;p+=4)d[p]=255
+  }
+  function ripple(px,py,str){
+    if(!gw)return
+    const gx=Math.round(px/CELL),gy=Math.round(py/CELL),R=3
+    for(let dy=-R;dy<=R;dy++)for(let dx=-R;dx<=R;dx++){
+      const x=gx+dx,y=gy+dy
+      if(x<1||y<1||x>=gw-1||y>=gh-1)continue
+      const d2=dx*dx+dy*dy;if(d2>R*R)continue
+      u0[y*gw+x]-=str*Math.exp(-d2/3)
+    }
+    idleT=0;wake()
+  }
+  function step(){
+    for(let y=1;y<gh-1;y++){
+      const o=y*gw
+      for(let x=1;x<gw-1;x++){
+        const i=o+x
+        u1[i]=(2*u0[i]-u1[i]+((u0[i-1]+u0[i+1]+u0[i-gw]+u0[i+gw])*4+u0[i-gw-1]+u0[i-gw+1]+u0[i+gw-1]+u0[i+gw+1]-20*u0[i])*0.0047)*0.994   // 9点＝波紋が丸くなる。さらに半分の速さ・長い余韻
+      }
+    }
+    const t=u0;u0=u1;u1=t
+  }
+  function draw(){
+    const d=img.data
+    for(let y=0;y<gh;y++){
+      const o=y*gw
+      for(let x=0;x<gw;x++){
+        const i=o+x,p=i*4
+        let v=noise[i]
+        if(x>0&&x<gw-1)v+=(u0[i+1]-u0[i-1])*90              // 勾配＝紙の上を滑る光
+        if(v>9)v=9;else if(v<-9)v=-9
+        d[p]=248+v;d[p+1]=246+v;d[p+2]=241+v
+      }
+    }
+    ctx.putImageData(img,0,0)
+  }
+  function loop(){
+    step();draw()                                          // 1フレーム1歩＝水はゆっくり進む
+    if(++idleT>240){raf=null;return}                        // 触れられず波も凪いだら、完全に眠る
+    raf=requestAnimationFrame(loop)
+  }
+  function wake(){if(!raf&&gw)raf=requestAnimationFrame(loop)}
+  document.addEventListener('DOMContentLoaded',()=>{
+    cv=document.createElement('canvas')
+    cv.setAttribute('aria-hidden','true')
+    cv.style.cssText='position:fixed;inset:-12px;width:calc(100vw + 24px);height:calc(100vh + 24px);z-index:-1;pointer-events:none;filter:blur(2.5px)'
+    document.body.prepend(cv)
+    ctx=cv.getContext('2d')
+    resize()
+    addEventListener('resize',()=>{resize();wake()})
+    let lm=0
+    addEventListener('pointerdown',e=>ripple(e.clientX,e.clientY,2.6),{passive:true})
+    addEventListener('pointermove',e=>{const n=performance.now();if(n-lm>60){lm=n;ripple(e.clientX,e.clientY,0.5)}},{passive:true})
+    setTimeout(()=>ripple(innerWidth*0.5,innerHeight*0.34,1.9),700)     // 目覚めの一滴
+    setTimeout(()=>ripple(innerWidth*0.64,innerHeight*0.55,1.1),1700)
+    wake()
+    /* ── あそびごころ：スマホを揺らすと、水面も揺れる（本物の水と同じ）──
+       iOSはセンサー許可が必要＝最初のタップに相乗りして一度だけ求める。拒否されても水面は普通に生きる */
+    let lastM=0
+    function onMotion(e){
+      const a=e.acceleration
+      if(!a||a.x==null)return
+      const mag=Math.hypot(a.x,a.y)
+      if(mag<1.8)return                                     // 歩行や手ぶれでは揺れない
+      const n=performance.now();if(n-lastM<120)return;lastM=n
+      const cx=innerWidth*(0.5-Math.max(-0.28,Math.min(0.28,a.x*0.035)))   // 揺れの向きへ、波が寄る
+      const cy=innerHeight*(0.45+Math.max(-0.25,Math.min(0.25,a.y*0.03)))
+      ripple(cx,cy,Math.min(3.2,mag*0.45))
+      if(mag>6){ripple(innerWidth*0.30,innerHeight*0.62,1.4);ripple(innerWidth*0.72,innerHeight*0.30,1.2)}  // 強く振れば、水面ぜんたいが乱れる
+    }
+    function enableMotion(){
+      try{
+        if(typeof DeviceMotionEvent==='undefined')return
+        if(typeof DeviceMotionEvent.requestPermission==='function'){
+          DeviceMotionEvent.requestPermission().then(r=>{if(r==='granted')addEventListener('devicemotion',onMotion,{passive:true})}).catch(()=>{})
+        }else addEventListener('devicemotion',onMotion,{passive:true})
+      }catch(e){}
+    }
+    document.addEventListener('pointerdown',function h(){document.removeEventListener('pointerdown',h,true);enableMotion()},{capture:true,once:true})
+  })
+  return {ripple,voice(lv){                                  // 録音中：声の強さが、そのまま波になる（紙が薄くなったので、カード越しにも見える）
+    if(lv>0.03)ripple(innerWidth*(0.5+Math.sin(performance.now()*0.0023)*0.20),innerHeight*(0.30+0.14*Math.sin(performance.now()*0.0011)),Math.min(3.8,lv*5.0))
+  }}
+})()
 document.addEventListener('visibilitychange',()=>{                       // タブ復帰：音の時計を立て直す
   if(!document.hidden&&typeof voiceLoop!=='undefined'&&voiceLoop.on&&melodyAC){try{melodyAC.resume()}catch(e){}}
 })
@@ -830,6 +937,7 @@ function drawWave(){
     ctx.clearRect(0,0,W,34)
     if(analyser)analyser.getByteFrequencyData(data)
     ctx.fillStyle='rgba(74,124,111,.38)'
+    if(isRec){let sum=0;for(let i=0;i<data.length;i++)sum+=data[i];MIZU.voice(sum/data.length/255)}   // 声（音の波）→水面（水の波）
     const bars=Math.floor(W/5)
     for(let i=0;i<bars;i++){
       const di=Math.floor(i/bars*data.length*0.72)
@@ -1682,10 +1790,17 @@ function goOrder(){
 
 /* ─── シェア（Instagram / Facebook / X / LINE） ─── */
 const SHARE_URL='https://nanoca-japan.github.io/koe-hyohon/'
-function shareCaption(){
+function shareCaption(p){
   const names=flowers?flowers.map(f=>f.sp.n).join('・'):''
   const id=design?design.sid:''
-  return `声から生まれた、わたしだけの花束「${names}」。\n声標本 KOE-HYOHON ${id}\n#声標本 #nanoca #KoeHyohon #声の花`
+  const tags={x:'#声標本 #声の花 #nanoca',
+              instagram:'#声標本 #声の花 #nanoca #KoeHyohon #ボイスアート #一点物 #ScienceArt',
+              tiktok:'#声標本 #声の花 #nanoca #ボイスアート',
+              line:''}
+  const tag=tags[p]!==undefined?tags[p]:tags.x
+  const base=`声から生まれた、わたしだけの花束「${names}」。\n声標本 KOE-HYOHON ${id}`
+  if(p==='line')return base+'\nあなたの声でも咲かせられます → '+SHARE_URL
+  return base+'\n'+SHARE_URL+(tag?'\n'+tag:'')
 }
 /* ─── 声を「5輪の音」で聴く（Web Audio｜声の実際の抑揚をピアノのペンタトニックへ写す） ───
    v2 音楽性強化（すべて決定論＝同じ声からは同じ音）：
@@ -2037,38 +2152,40 @@ function specimenImageBlob(){
     try{ctx.drawImage(src,0,padT,W,H)}catch(e){}
     const serif=`'Shippori Mincho','Hiragino Mincho ProN',serif`, mono=`'DM Mono',monospace`
     ctx.textBaseline='middle'
-    // ── 上帯：この設計図の名乗り（番号・構図・花の名前）──
+    const fx=(k,base)=>Math.round(Math.min(base,W*k))      // 文字は帯の高さと画像の横幅、両方に収める（見切れ・重なりの根絶）
+    const fitText=(txt,maxW)=>{while(ctx.measureText(txt).width>maxW&&txt.length>2)txt=txt.slice(0,-2)+'…';return txt}
+    // ── 上帯：この設計図の名乗り（番号・構図・花の名前。IDは右上に離す）──
     ctx.textAlign='left'
     ctx.fillStyle='rgba(233,229,216,0.95)'
-    ctx.font=`${Math.round(padT*0.30)}px ${serif}`
-    ctx.fillText('声標本  造形設計図 '+(design?'#'+design.sid.slice(-3):''), Math.round(W*0.06), padT*0.30)
+    ctx.font=`${fx(0.045,padT*0.30)}px ${serif}`
+    ctx.fillText('声標本  造形設計図 '+(design?'#'+design.sid.slice(-3):''), Math.round(W*0.06), padT*0.28)
     ctx.fillStyle='rgba(196,192,178,0.9)'
-    ctx.font=`${Math.round(padT*0.22)}px ${serif}`
+    ctx.font=`${fx(0.034,padT*0.22)}px ${serif}`
     const compoTxt=(typeof compo!=='undefined'&&compo?('構図「'+compo.jp+'」 '+(flowers?flowers.length:'')+'輪 — '):'')
-    ctx.fillText(compoTxt+'すべて、声から生まれた新しい花', Math.round(W*0.06), padT*0.60)
+    ctx.fillText(fitText(compoTxt+'すべて、声から生まれた新しい花',W*0.88), Math.round(W*0.06), padT*0.57)
     if(flowers){
       ctx.fillStyle='rgba(233,229,216,0.85)'
-      ctx.font=`${Math.round(padT*0.22)}px ${serif}`
-      ctx.fillText(flowers.map(f=>f.sp.n).join('・'), Math.round(W*0.06), padT*0.85)
+      ctx.font=`${fx(0.034,padT*0.22)}px ${serif}`
+      ctx.fillText(fitText(flowers.map(f=>f.sp.n).join('・'),W*0.88), Math.round(W*0.06), padT*0.84)
     }
-    // ── 下帯：科学の数値（この花の根拠）──
+    // ── 下帯：科学の数値（この花の根拠）。右端はIDとブランドだけ、行を分けて重ねない ──
     ctx.textAlign='left'
     ctx.fillStyle='rgba(233,229,216,0.92)'
-    ctx.font=`${Math.round(padB*0.30)}px ${serif}`
-    ctx.fillText('声標本  KOE-HYOHON', Math.round(W*0.06), H+padT+padB*0.30)
+    ctx.font=`${fx(0.042,padB*0.28)}px ${serif}`
+    ctx.fillText('声標本  KOE-HYOHON', Math.round(W*0.06), H+padT+padB*0.26)
     if(metrics){
       ctx.fillStyle='rgba(196,192,178,0.88)'
-      ctx.font=`${Math.round(padB*0.21)}px ${mono}`
+      ctx.font=`${fx(0.030,padB*0.21)}px ${mono}`
       const mv=v=>String(Math.round(v*100))
-      ctx.fillText('重心'+mv(metrics.core)+'  密度'+mv(metrics.dens)+'  流れ'+mv(metrics.flow)+'  光'+mv(metrics.light)+'  余韻'+mv(metrics.after), Math.round(W*0.06), H+padT+padB*0.60)
+      ctx.fillText('重心'+mv(metrics.core)+'  密度'+mv(metrics.dens)+'  流れ'+mv(metrics.flow)+'  光'+mv(metrics.light)+'  余韻'+mv(metrics.after), Math.round(W*0.06), H+padT+padB*0.56)
       ctx.fillStyle='rgba(154,150,138,0.8)'
-      ctx.font=`${Math.round(padB*0.15)}px ${mono}`
-      ctx.fillText('5つの視点 = 声の音響解析値（科学監修つき・同じ声からは同じ花）', Math.round(W*0.06), H+padT+padB*0.84)
+      ctx.font=`${fx(0.024,padB*0.15)}px ${mono}`
+      ctx.fillText(fitText('5つの視点 = 声の音響解析値（科学監修つき・同じ声からは同じ花）',W*0.88), Math.round(W*0.06), H+padT+padB*0.83)
     }
     ctx.textAlign='right'
     ctx.fillStyle='rgba(196,192,178,0.75)'
-    ctx.font=`${Math.round(padB*0.24)}px ${mono}`
-    ctx.fillText((design?design.sid+'   ':'')+'nanoca', Math.round(W*0.94), H+padT+padB*0.30)
+    ctx.font=`${fx(0.028,padT*0.20)}px ${mono}`
+    ctx.fillText((design?design.sid+'  ':'')+'nanoca', Math.round(W*0.94), padT*0.28)   // IDは上帯の右＝何とも重ならない
     cv.toBlob(b=>res(b),'image/png')
   })
 }
@@ -2086,7 +2203,7 @@ const SNS_NAME={x:'X',instagram:'Instagram',tiktok:'TikTok',line:'LINE'}
    PC等：画像を保存してから各SNSを開く（保存画像を投稿に添付） */
 async function shareTo(p){
   const blob=await specimenImageBlob()
-  const cap=shareCaption()
+  const cap=shareCaption(p)
   // 1) 画像ファイルを直接添付できる環境（主にスマホ）
   try{
     if(blob && navigator.canShare){
@@ -2101,7 +2218,7 @@ async function shareTo(p){
   // 2) 画像添付が使えない環境（主にPC）：画像を保存してから各SNSへ
   if(blob) saveImage(blob)
   if(p==='x'){
-    window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(cap),'_blank','noopener,noreferrer')
+    window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(shareCaption('x')),'_blank','noopener,noreferrer')
     shareHint('設計図の画像を保存しました。Xの投稿画面で、その画像を添付してください。')
   }else if(p==='line'){
     window.open('https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(SHARE_URL)+'&text='+encodeURIComponent(cap),'_blank','noopener,noreferrer')
@@ -2398,6 +2515,25 @@ function initSpecimen(cid,wid,num){
   birthGlow.scale.set(3.4,3.4,1);birthGlow.position.set(0,0.75,0)
   pivot.add(birthGlow)
 
+  /* ── 水面の波紋：罅の瞬間・花が生える瞬間、卵の足元の暗い水面に白い輪が広がる ── */
+  const waterRipples=[]
+  function spawnRipple(t0,big){
+    const pts=[];for(let i=0;i<=56;i++){const a=i/56*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a),0,Math.sin(a)*0.94))}
+    const l=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({color:0xe9e5d8,transparent:true,opacity:0}))
+    l.position.y=-EGG.ryB-0.279
+    pivot.add(l);waterRipples.push({l,t0,big:big?1:0})
+  }
+  function updateRipples(age){
+    for(let i=waterRipples.length-1;i>=0;i--){
+      const r=waterRipples[i],t=age-r.t0,dur=r.big?2.6:1.8
+      if(t<0)continue
+      if(t>dur){pivot.remove(r.l);try{r.l.geometry.dispose();r.l.material.dispose()}catch(e){};waterRipples.splice(i,1);continue}
+      const k=t/dur
+      r.l.scale.setScalar((r.big?1.15:0.55)+k*(r.big?2.4:1.5))
+      r.l.material.opacity=(r.big?0.45:0.30)*Math.sin(Math.PI*Math.min(1,k*1.15))*(1-k*0.35)
+    }
+  }
   /* ── 透明レジンの土台：輪郭線のみ ── */
   const bc=[]
   for(let i=0;i<=72;i++){const a=i/72*Math.PI*2;bc.push(new THREE.Vector3(1.1*Math.cos(a),-EGG.ryB-0.28,1.1*Math.sin(a)))}
@@ -2953,7 +3089,7 @@ function initSpecimen(cid,wid,num){
     rimGeo.setDrawRange(0,Math.floor(cp*rimClosed.length))
     rimMat.opacity=0.15+0.72*SM(cp)
     // 殻の胎動：割れるまで微かに震え、割れた瞬間に小さくひらく
-    if(!crackBuzzed&&age>=RELEASE){crackBuzzed=true;buzz(16)}          // 殻がひらく——手のひらに、微かな脈
+    if(!crackBuzzed&&age>=RELEASE){crackBuzzed=true;buzz(16);spawnRipple(age,true);spawnRipple(age+0.22,true)}   // 殻がひらく——水面に波紋がふたつ
     const tr=Math.max(0,1-age/2.1)
     const kick=Math.exp(-Math.pow((age-RELEASE)*5,2))*0.034   // 割れる：はっきり開く
     shellG.rotation.z=Math.sin(age*34)*0.006*tr*tr
@@ -2972,7 +3108,7 @@ function initSpecimen(cid,wid,num){
       const rk=CK((age-tRise)/2.6,0,1), rise=SIO(rk)                  // 伸びる：柔らかなS字で、さらにゆっくり
       if(rk>0.02&&!fa.fg.visible)fa.fg.visible=true         // 割れた殻の中から、はじめて姿を見せる
       if(rk>=1&&fa.clipped){fa.clipped=false;fa.fg.traverse(o=>{if(o.material)o.material.clippingPlanes=null})}  // 生えきったら切断面を外す
-      if(!fa.buzzed&&rk>0){fa.buzzed=true;buzz(8)}                    // 一輪が生まれる——ごく微かに
+      if(!fa.buzzed&&rk>0){fa.buzzed=true;buzz(8);spawnRipple(age)}   // 一輪が生まれる——小さな波紋がひとつ
       fa.fg.position.y=-1.35*(1-rise)                       // 殻の内側から上へ——蕾の先端から順に、縁を越えて生えてくる
       fa.fg.scale.set(0.92+0.08*rise,Math.max(rise,0.001),0.92+0.08*rise)
       fa.fg.rotation.y=(1-rise)*0.4*(n%2?1:-1)                        // ほどける向きは交互に
@@ -2990,6 +3126,7 @@ function initSpecimen(cid,wid,num){
     cam.position.y=2.55-0.25*cz
     cam.lookAt(0,1.35,0)
     updateFlows(age)
+    updateRipples(age)
     const hf=SM(CK((age-2.8)/1.8,0,1));halo.children.forEach(l=>l.material.opacity=0.10*hf)
     halo.rotation.y-=0.0012
     pivot.rotation.y=rotY
