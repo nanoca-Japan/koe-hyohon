@@ -355,7 +355,7 @@ body.meishi-mode #meishi-band{display:block}
 <body>
 <div id="app">
   <div class="hdr">
-    <div class="logo">声標本<sup>®</sup><small>koe-hyohon / voice specimen — nanoca</small></div>
+    <div class="logo">声標本<sup>™</sup><small>koe-hyohon / voice specimen — nanoca</small></div>
     <div class="step-lbl" id="slbl">STEP 0<br>声を採取する</div>
   </div>
 
@@ -409,7 +409,7 @@ body.meishi-mode #meishi-band{display:block}
     <div class="tagline">
       <p>科学によって声を理解し、ITによって設計し、人の手によって完成する。</p>
       <p class="sxa">Science × IT × Art</p>
-      <p style="font-size:8.5px;color:var(--ink4);letter-spacing:.08em;text-align:center;margin-top:8px">© 2026 株式会社ナノカ ｜ 声標本®のしくみ・文章・意匠の無断複製・翻案を禁じます</p>
+      <p style="font-size:8.5px;color:var(--ink4);letter-spacing:.08em;text-align:center;margin-top:8px">© 2026 株式会社ナノカ ｜ 声標本™のしくみ・文章・意匠の無断複製・翻案を禁じます</p>
     </div>
   </div>
 
@@ -423,7 +423,7 @@ body.meishi-mode #meishi-band{display:block}
     <div class="log-box" id="logbox" aria-live="polite"></div>
     <div class="prog"><div class="progb" id="progb"></div></div>
     <div class="note">
-      <p>解析は、科学者の研究・監修（林大輔博士／声遊楽プロジェクト）に基づいて声を数値化するプロセスです</p>
+      <p>解析は、声の音響特徴を数値化するプロセスです<br>科学監修　林 大輔（博士（心理学））</p>
       <p><em>この段階で完成作品の形が決まることはありません</em></p>
     </div>
   </div>
@@ -454,7 +454,7 @@ body.meishi-mode #meishi-band{display:block}
           <li><b>声のらしさの拡大</b>— 5つの視点のうち、あなたの声で際立つものを拡大して花に映します。花色もあなたの声の明るさと深さに調律され、声の長さが束の伸びやかさを決めます。<b>同じ花名でも、色とかたちは一人ひとり違います。</b></li>
         </ul>
         <p class="sci-note">※これらは声の音響特徴と「印象」の対応にもとづく翻訳であり、性格や優劣を判定するものではありません。録音環境により一部の数値は変化します。</p>
-        <p class="sci-cred">科学監修：林大輔 博士（心理学、東京大学／「声遊楽プロジェクト」主宰）</p>
+        <p class="sci-cred">科学監修　林 大輔（博士（心理学））</p>
       </div>
     </details>
     <div class="note">
@@ -642,15 +642,15 @@ body.meishi-mode #meishi-band{display:block}
       <div class="tagline">
         <p>声標本は、科学によって声を理解し、ITによって設計し、人の手によって完成する。</p>
         <p class="sxa">Science × IT × Art</p>
-      <p style="font-size:8.5px;color:var(--ink4);letter-spacing:.08em;text-align:center;margin-top:8px">© 2026 株式会社ナノカ ｜ 声標本®のしくみ・文章・意匠の無断複製・翻案を禁じます</p>
+      <p style="font-size:8.5px;color:var(--ink4);letter-spacing:.08em;text-align:center;margin-top:8px">© 2026 株式会社ナノカ ｜ 声標本™のしくみ・文章・意匠の無断複製・翻案を禁じます</p>
         <p style="margin-top:4px">声の記録が、理解を生み、つながりを育て、未来をつくる。</p>
       </div>
     </div>
   </div>
 
   <div class="ftr">
-    <p>科学 × アート × 教育 — 人の理解を深める新しいインターフェース<br>KOE-HYOHON® by nanoca</p>
-    <p style="margin-top:8px;font-size:9.5px;color:var(--ink4);letter-spacing:.04em">科学監修：林大輔 博士（声遊楽プロジェクト）</p>
+    <p>科学 × アート × 教育 — 人の理解を深める新しいインターフェース<br>KOE-HYOHON™ by nanoca</p>
+    <p style="margin-top:8px;font-size:9.5px;color:var(--ink4);letter-spacing:.04em">科学監修　林 大輔（博士（心理学））</p>
   </div>
 </div>
 
@@ -2067,7 +2067,7 @@ function analyzeBuffer(buf,vp){
   for(let i=0;i<FS;i++)hann[i]=0.5-0.5*Math.cos(2*Math.PI*i/(FS-1))
   const nF=Math.max(1,Math.floor((N-FS)/HOP))
   const rms=[],zcr=[],cent=[],lowR=[],flux=[]
-  const alphaA=[],tiltA=[]   // f57：Alpha ratio（力強さ）とスペクトル傾斜（柔らかさ）の時系列（林メモの音響特徴リスト）
+  const alphaA=[],tiltA=[]   // f57：Alpha ratio（力強さ）とスペクトル傾斜（柔らかさ）の時系列（監修メモの音響特徴リスト）
   let prevMag=null
   const step=Math.max(1,Math.floor(nF/240)) // 最大240フレームに間引き
   for(let f=0;f<nF;f+=step){
@@ -2093,7 +2093,7 @@ function analyzeBuffer(buf,vp){
         const hz=k*sr/FS
         cw+=m*hz
         if(hz<280)low+=m
-        const pw=m*m                                        // f57：帯域パワー（林メモ＝Alpha ratio・スペクトル傾斜の材料）
+        const pw=m*m                                        // f57：帯域パワー（監修メモ＝Alpha ratio・スペクトル傾斜の材料）
         if(hz<1000)e1k+=pw
         else if(hz<5000)e15+=pw
         if(hz>=2000&&hz<5000)e25+=pw
@@ -2101,7 +2101,7 @@ function analyzeBuffer(buf,vp){
       }
       cent.push(ms>0?cw/ms:0)
       lowR.push(ms>0?low/ms:0)
-      if(e1k>1e-9&&e15>1e-9){                               // f57：声のあるフレームだけ時系列に積む（中央値で代表させる＝林の手法）
+      if(e1k>1e-9&&e15>1e-9){                               // f57：声のあるフレームだけ時系列に積む（中央値で代表させる＝監修の助言による手法）
         alphaA.push(10*Math.log10(e1k/e15))                 // Alpha ratio(dB)：低音域が支配的なほど大＝力強い/重厚
         tiltA.push(10*Math.log10(Math.max(1e-9,e25)/e1k))   // スペクトル傾斜(dB)：急峻（大きく負）なほど柔らかい・breathy
       }
@@ -2154,10 +2154,10 @@ function analyzeBuffer(buf,vp){
   const light = clamp01( (meanCent-350)/(3000-350) )
   const after = clamp01( clamp01(tailSec/0.70)*0.50 + clamp01(std(zcr)/0.05)*0.28 + clamp01(mean(zcr)/0.18)*0.22 ) // 余韻の感度を上げ、かすれ（非周期性の代理）も加える
 
-  /* ── f57：追加3指標（林研究室の音響特徴リストより。5視点の値には一切影響しない独立の観測） ──
+  /* ── f57：追加3指標（監修メモの音響特徴リストより。5視点の値には一切影響しない独立の観測） ──
      高さ（taka）＝基本周波数の中央値／柔らかさ（yawa）＝スペクトル傾斜の中央値（breathy voice）／
      力強さ（chika）＝Alpha ratio（<1000Hz と 1000-5000Hz のパワー比）。
-     いずれも時系列の中央値＝一瞬の外れ値に引きずられない（林の研究手法に忠実）。 */
+     いずれも時系列の中央値＝一瞬の外れ値に引きずられない（監修の助言に忠実）。 */
   const medOf=a=>{if(!a.length)return null;const s=a.slice().sort((x,y)=>x-y);return s[Math.floor(s.length/2)]}
   const aDb=medOf(alphaA), tDb=medOf(tiltA)
   const chika=aDb==null?0.5:clamp01(aDb/30)                        // 0dB→0 / 30dB（低域支配）→1
@@ -2259,7 +2259,7 @@ function translateToFlowers(m){
   m={core:_amp(m.core,_VPC.core),dens:_amp(m.dens,_VPC.dens),flow:_amp(m.flow,_VPC.flow),
      light:_amp(m.light,_VPC.light),after:_amp(m.after,_VPC.after),
      taka:m.taka,yawa:m.yawa,chika:m.chika,dur:m.dur||0}
-  /* ═══ f57：聴取印象5因子（木戸・粕谷1999／林メモの5因子解に準拠。すべて決定論・rng不使用）═══
+  /* ═══ f57：聴取印象5因子（木戸・粕谷1999／監修メモの5因子解に準拠。すべて決定論・rng不使用）═══
      追加3指標（高さ・柔らかさ・力強さ）が揃った声（v2）だけで働く。
      旧リンク（v1）はこのブロック全体が眠ったまま＝配布済みの花は一輪も変わらない。
      因子負荷の符号構造を写像式に写す（値は較正原点と同じく科学の更新スロット）：
@@ -2297,7 +2297,7 @@ function translateToFlowers(m){
   /* ── 1) 役の割り当て：視点ごとの「較正原点」からの距離で 真・副・添・添・控 ──
      話し声は誰でも抑揚（流れ）が高く出る等、指標には固有の偏りがある。絶対値0.5ではなく
      各視点の“典型”からの距離で際立ちを測ることで、特定の視点（構図）への固定化を防ぐ。
-     較正原点は暫定値＝科学の更新スロット（林博士の実データで更新可）。 */
+     較正原点は暫定値＝科学の更新スロット（監修者の実データで更新可）。 */
   const VP_CENTER={core:0.58,dens:0.55,flow:0.62,light:0.50,after:0.42}
   const sal=VIEWPOINTS.map((vp,i)=>({vp,v:m[vp.key],s:Math.abs(m[vp.key]-VP_CENTER[vp.key]),i}))
   const order=sal.slice().sort((a,b)=>b.s-a.s)
